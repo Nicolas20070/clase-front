@@ -29,7 +29,12 @@ const ficha = "2902093"
     const loading = false;
     const showComments = true;
     if(loading === true) return (<h1>Cargando comentarios..</h1>)
-        
+    
+        const addComentario = ( newComentario ) =>{
+            setComments(prevComments => [ ...prevComments, newComentario ]);
+
+        }
+
   return (
     <div className='container'>
         <Header  
@@ -37,7 +42,7 @@ const ficha = "2902093"
             autor={Autor}  
             centro={centro} 
             ficha={ficha}/>
-        <ComentarioForm  /> {/* Usa el nuevo componente */}
+        <ComentarioForm handleAdd= { addComentario } /> {/* Usa el nuevo componente */}
         <ComentarioStats comentarios={comments}/>
         <ComentarioLista 
             comments={comments} 

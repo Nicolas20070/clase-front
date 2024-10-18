@@ -1,13 +1,27 @@
-import React from 'react'
 
-const ComentarioCalificacion = () => {
-  return (
+import {React , useState} from 'react'
+
+function ComentarioCalificacion ({ select }) {
+
+    
+
+    //estado pára almacenar la nota elegida
+    const [ selected , setSelected ]
+                 = useState(11)
+    //funcion para click en un radio button
+    const handleChange = (e) =>{
+            setSelected(+e.currentTarget.value);
+            select(  +e.currentTarget.value)
+    }
+  return ( 
   <ul className='rating'>
     <li key="1">
         <input
             type="radio"
             id="num1" 
             name="calificacion"
+            onChange={ handleChange }
+            checked={ selected === 1 }
             value="1"
 
         />
@@ -18,6 +32,8 @@ const ComentarioCalificacion = () => {
             type="radio"
             id="num2" 
             name="calificacion"
+            onChange={ handleChange }
+            checked={ selected === 2 }
             value="2"
 
         />
@@ -28,6 +44,8 @@ const ComentarioCalificacion = () => {
             type="radio"
             id="num3" 
             name="calificacion"
+            onChange={ handleChange }
+            checked={ selected === 3 }
             value="3"
 
         />
@@ -38,6 +56,8 @@ const ComentarioCalificacion = () => {
             type="radio"
             id="num4" 
             name="calificacion"
+            onChange={ handleChange }
+            checked={ selected === 4 }
             value="4"
 
         />
@@ -48,6 +68,8 @@ const ComentarioCalificacion = () => {
             type="radio"
             id="num5" 
             name="calificacion"
+            onChange={ handleChange }
+            checked={ selected === 5 }
             value="5"
 
         />
@@ -58,6 +80,8 @@ const ComentarioCalificacion = () => {
             type="radio"
             id="num6" 
             name="calificacion"
+            onChange={ handleChange }
+            checked={ selected === 6 }
             value="6"
 
         />
@@ -68,6 +92,8 @@ const ComentarioCalificacion = () => {
             type="radio"
             id="num7" 
             name="calificacion"
+            onChange={ handleChange }
+            checked={ selected === 7 }
             value="7"
 
         />
@@ -76,8 +102,10 @@ const ComentarioCalificacion = () => {
     <li key="8">
         <input
             type="radio"
-            id="num1" 
+            id="num8" 
             name="calificacion"
+            onChange={ handleChange }
+            checked={ selected === 8 }
             value="8"
 
         />
@@ -86,8 +114,10 @@ const ComentarioCalificacion = () => {
     <li key="9">
         <input
             type="radio"
-            id="num1" 
+            id="num9" 
             name="calificacion"
+            onChange={ handleChange }
+            checked={ selected === 9 }
             value="9"
 
         />
@@ -98,6 +128,8 @@ const ComentarioCalificacion = () => {
             type="radio"
             id="num10" 
             name="calificacion"
+            onChange={ handleChange }
+            checked={ selected === 10 }
             value="10"
 
         />
