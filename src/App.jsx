@@ -1,24 +1,19 @@
 import {React, useState} from 'react'
+import { BrowserRouter as Router , Routes , Route } from 'react-router-dom'
 import Header from './component/Header';
-import ComentarioItem from './component/ComentarioItem';
 import Comentarios from './data/Comentarios';
 import ComentarioLista from './component/ComentarioLista';
-import Card from './component/Card';
 import ComentarioStats from './component/ComentarioStats';
 import ComentarioForm from './component/ComentarioForm';
+import About from './pages/about';
+import AboutIconLink from './component/AboutIconLink';
+import { ComentariosProvider } from './contexto/ComentariosContexto';
 function App() {
 
     const [comments , 
         setComments] = useState(Comentarios)
 
-    const borrarItem=id=>{
-        if(window.confirm("Esta seguro de borrar el comentario")){
-            //asignar nuevo estado a comments :
-            //filter: para quitar los comentario
-            //
-            setComments(comments.filter((c)=>c.id !== id))
-        }
-    }
+    
 
 const titulo ="App de Comentarios";
 const Autor =" por Nicolas Oviedo"
@@ -36,19 +31,37 @@ const ficha = "2902093"
         }
 
   return (
-    <div className='container'>
-        <Header  
-            titulo={titulo} 
-            autor={Autor}  
-            centro={centro} 
-            ficha={ficha}/>
-        <ComentarioForm handleAdd= { addComentario } /> {/* Usa el nuevo componente */}
-        <ComentarioStats comentarios={comments}/>
-        <ComentarioLista 
-            comments={comments} 
-            handleDelete={borrarItem}/>
-           
-    </div>
+        <ComentariosProvider>
+            <Router>
+                <div className='container'>
+                <Header  
+                    titulo={titulo} 
+                    autor={Autor}  
+                    centro={centro} 
+                    ficha={ficha}/>
+                <Routes>
+                    <Route exact path='/' element={
+                        <>
+                            <ComentarioForm handleAdd= { addComentario } /> 
+                            <ComentarioLista/>
+                            <AboutIconLink/>
+                        </>
+                    }>
+                    </Route>
+                    <Route path='/about' element={<About 
+                    titulo={titulo}
+                    autor= {Autor}
+                    ficha={ficha}/>}></Route>
+                </Routes>
+                </div>
+    </Router>
+
+        </ComentariosProvider>
+        
+
+
+    
+    
     
   )
 }

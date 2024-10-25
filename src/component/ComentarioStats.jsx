@@ -1,6 +1,10 @@
-import React from 'react';
+import { React , useContext, useState} from 'react'
+import ComentariosContexto from '../contexto/ComentariosContexto';
 
-const ComentarioStats = ({ comentarios }) => {
+const ComentarioStats = () => {
+  const { comments } = useContext(ComentariosContexto)
+  const comentarios = comments
+
   const totalComentarios = comentarios.length;
 
   const calificacionPromedio = 
